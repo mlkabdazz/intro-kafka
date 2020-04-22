@@ -1,4 +1,4 @@
-package id.co.djinggoo.introkafka.model.domain;
+package id.co.djinggoo.introkafka.model.product;
 
 import id.co.djinggoo.introkafka.model.base.BaseMaster;
 import lombok.Data;

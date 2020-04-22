@@ -2,6 +2,7 @@ package id.co.djinggoo.introkafka.service.product.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import id.co.djinggoo.introkafka.model.product.Product;
 import id.co.djinggoo.introkafka.model.product.ProductDto;
 import id.co.djinggoo.introkafka.repository.product.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -29,10 +30,10 @@ public class ProductProducer {
 
     public void sendSimpleMessage(){
         ObjectMapper objectMapper = new ObjectMapper();
-        List<id.co.djinggoo.introkafka.model.domain.Product> products = productRepository.findAll();
+        List<Product> products = productRepository.findAll();
 
         try {
-            for (id.co.djinggoo.introkafka.model.domain.Product product : products) {
+            for (Product product : products) {
                 kafkaTemplate.send(topicProduct, objectMapper.writeValueAsString(product));
             }
         }catch (IllegalArgumentException e){

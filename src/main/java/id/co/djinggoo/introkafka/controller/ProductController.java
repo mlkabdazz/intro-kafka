@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
 
     @Autowired
-    private ProductProducer productService;
+    private ProductProducer productProducer;
 
     @ResponseStatus(code = HttpStatus.OK)
     @GetMapping(value = "/producer/sendsimplemessage")
     public ResponseDto sendSimpleMessage(){
         try {
-            productService.sendSimpleMessage();
+            productProducer.sendSimpleMessage();
             return new ResponseDto("success to send message to product topic", "Success");
         }catch (IllegalArgumentException e){
             return new ResponseDto("Failed to send message to product topic", "Failed");
